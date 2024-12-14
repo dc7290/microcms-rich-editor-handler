@@ -1,0 +1,37 @@
+{
+  "name": "microcms-rich-editor-handler",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "microcms",
+    "richeditor",
+    "rich",
+    "editor"
+  ],
+  "homepage": "https://github.com/dc7290/microcms-rich-editor-handler#readme",
+  "bugs": {
+    "url": "https://github.com/dc7290/microcms-rich-editor-handler/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dc7290/microcms-rich-editor-handler.git"
+  },
+  "license": "MIT",
+  "author": "d-suke",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.48.0",
+    "@tsconfig/strictest": "^2.0.5",
+    "@vitest/coverage-v8": "^2.1.8",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
