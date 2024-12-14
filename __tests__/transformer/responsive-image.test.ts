@@ -54,6 +54,32 @@ describe("ResponsiveImageTransformer", () => {
 		expect(height).toEqual(expectedHeight);
 	});
 
+	test("正常系: 指定したattributesが使われること", async () => {
+		const $ = cheerioLoad(`<figure>
+			<img
+				src="https://images.microcms-assets.io/assets/88f12f69f3bd4e13b769561fe720d255/04a3790c7ab94dff9379025420f60040/blog-template.png"
+				alt=""
+				width="1200"
+				height="630"
+			>
+		</figure>`);
+
+		await responsiveImageTransformer({
+			attributes: {
+				style: "border: 1px solid red",
+			},
+		})($);
+
+		// <picture>タグの中の <img>タグを抽出
+		const sourceTags = $("picture img");
+
+		// style 属性が正しいかをチェック
+		const style = sourceTags.attr("style");
+		const expectedStyle = "border: 1px solid red";
+
+		expect(style).toEqual(expectedStyle);
+	});
+
 	test("正常系: formats が指定されている場合はそれを使う", async () => {
 		const $ = cheerioLoad(`<figure>
       <img

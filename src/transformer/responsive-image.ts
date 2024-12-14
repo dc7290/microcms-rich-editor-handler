@@ -4,26 +4,44 @@ const validFormats = ["default", "webp", "avif"] as const;
 
 type Options = {
 	/**
-	 * img, sourceタグの属性に指定する値
-	 * imgタグとsourceタグの両方に指定されるものとimgタグのみに指定されるものがある
+	 * imgタグの属性に指定する値
 	 */
 	attributes?: {
+		[key: string]: string | undefined;
 		/**
-		 * img, sourceタグのsizes属性に指定する値
+		 * imgタグのsizes属性に指定する値
+		 * デフォルトは100vw
 		 */
 		sizes?: string;
 		/**
 		 * imgタグのloading属性に指定する値
+		 * デフォルトはlazy
 		 */
 		loading?: "lazy" | "eager";
-
-		[key: string]: string | undefined;
+		/**
+		 * imgタグのdecoding属性に指定する値
+		 * デフォルトはasync
+		 */
+		decoding?: "sync" | "async" | "auto";
 	};
+	/**
+	 * サポートする画像の拡張子
+	 * 先頭の要素がフォールバックの拡張子になり、それ以降順番に優先度が高く最後の要素が最も優先して表示を試みる拡張子になる
+	 * デフォルトは["default", "webp"]
+	 */
 	formats?: (typeof validFormats)[number][] | undefined;
+	/**
+	 * サポートするデバイスの幅
+	 * この幅に合わせて画像のサイズが生成される
+	 * デフォルトは[640, 750, 828, 1080, 1200, 1920, 2048, 3840]
+	 */
 	deviceSizes?: number[] | undefined;
 };
 
-// imgタグをpictureタグを使用したレスポンシブ画像に変換する
+/**
+ * imgタグをpictureタグを使用したレスポンシブ画像に変換する
+ * https://developer.mozilla.org/ja/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+ */
 const responsiveImageTransformer: (
 	options?: Options | undefined,
 ) => Transformer = (options) => async ($) => {
@@ -50,6 +68,7 @@ const responsiveImageTransformer: (
 		...options?.attributes,
 		sizes: options?.attributes?.sizes ?? "100vw",
 		loading: options?.attributes?.loading ?? "lazy",
+		decoding: options?.attributes?.decoding ?? "async",
 	};
 
 	// deviceSizesが指定されている場合は、それを使う
@@ -102,8 +121,9 @@ const responsiveImageTransformer: (
 
 		// imgタグを生成
 		const $imgClone = $img.clone();
-		$imgClone.attr("sizes", attributes.sizes);
-		$imgClone.attr("loading", attributes.loading);
+		for (const [key, value] of Object.entries(attributes)) {
+			$imgClone.attr(key, value);
+		}
 		$imgClone.attr("width", width);
 		$imgClone.attr("height", height);
 		$imgClone.attr("srcset", buildSrcset(src, deviceSizes, defaultFormat));
