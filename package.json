@@ -49,5 +49,8 @@
     "shiki": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
