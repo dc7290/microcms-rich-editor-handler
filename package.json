@@ -16,15 +16,18 @@
     "type": "git",
     "url": "git+https://github.com/dc7290/microcms-rich-editor-handler.git"
   },
+  "license": "MIT",
+  "author": "d-suke",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     }
   },
-  "license": "MIT",
-  "author": "d-suke",
   "main": "./dist/index.mjs",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "vitest",
