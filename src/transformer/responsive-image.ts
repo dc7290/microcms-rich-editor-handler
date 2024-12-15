@@ -39,7 +39,7 @@ type Options = {
 };
 
 /**
- * imgタグをpictureタグを使用したレスポンシブ画像に変換する
+ * imgタグをpictureタグを使用したレスポンシブ画像(解像度の切り替え)に変換する
  * https://developer.mozilla.org/ja/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
  */
 const responsiveImageTransformer: (
