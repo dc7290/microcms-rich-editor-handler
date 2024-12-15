@@ -16,12 +16,19 @@
     "type": "git",
     "url": "git+https://github.com/dc7290/microcms-rich-editor-handler.git"
   },
+  "exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		}
+  },
   "license": "MIT",
   "author": "d-suke",
-  "main": "index.js",
+  "main": "./dist/index.mjs",
   "scripts": {
     "build": "tsup",
-    "test": "vitest"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "cheerio": "^1.0.0"
