@@ -6,6 +6,4 @@ export default defineConfig({
 	experimentalDts: true,
 	sourcemap: true,
 	clean: true,
-	minify: true,
-	treeshake: true,
 });
