@@ -44,7 +44,7 @@ type Options = {
  */
 const responsiveImageTransformer: (
 	options?: Options | undefined,
-) => Transformer = (options) => async ($) => {
+) => Transformer = (options) => ($) => {
 	// バリデーション
 	if (options?.formats) {
 		for (const format of options.formats) {

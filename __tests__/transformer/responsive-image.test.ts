@@ -3,7 +3,7 @@ import responsiveImageTransformer from "../../src/transformer/responsive-image";
 import { cheerioLoad } from "../test-utils";
 
 describe("ResponsiveImageTransformer", () => {
-	test("正常系: imgタグの属性を使ってpictureタグに置き換わること", async () => {
+	test("正常系: imgタグの属性を使ってpictureタグに置き換わること", () => {
 		const $ = cheerioLoad(`<figure>
       <img
         src="https://images.microcms-assets.io/assets/88f12f69f3bd4e13b769561fe720d255/04a3790c7ab94dff9379025420f60040/blog-template.png"
@@ -13,7 +13,7 @@ describe("ResponsiveImageTransformer", () => {
       >
     </figure>`);
 
-		await responsiveImageTransformer({
+		responsiveImageTransformer({
 			attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 		})($);
 
@@ -54,7 +54,7 @@ describe("ResponsiveImageTransformer", () => {
 		expect(height).toEqual(expectedHeight);
 	});
 
-	test("正常系: 指定したattributesが使われること", async () => {
+	test("正常系: 指定したattributesが使われること", () => {
 		const $ = cheerioLoad(`<figure>
 			<img
 				src="https://images.microcms-assets.io/assets/88f12f69f3bd4e13b769561fe720d255/04a3790c7ab94dff9379025420f60040/blog-template.png"
@@ -64,7 +64,7 @@ describe("ResponsiveImageTransformer", () => {
 			>
 		</figure>`);
 
-		await responsiveImageTransformer({
+		responsiveImageTransformer({
 			attributes: {
 				style: "border: 1px solid red",
 			},
@@ -80,7 +80,7 @@ describe("ResponsiveImageTransformer", () => {
 		expect(style).toEqual(expectedStyle);
 	});
 
-	test("正常系: formats が指定されている場合はそれを使う", async () => {
+	test("正常系: formats が指定されている場合はそれを使う", () => {
 		const $ = cheerioLoad(`<figure>
       <img
         src="https://images.microcms-assets.io/assets/88f12f69f3bd4e13b769561fe720d255/04a3790c7ab94dff9379025420f60040/blog-template.png"
@@ -90,7 +90,7 @@ describe("ResponsiveImageTransformer", () => {
       >
     </figure>`);
 
-		await responsiveImageTransformer({
+		responsiveImageTransformer({
 			attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 			formats: ["webp", "avif"],
 		})($);
@@ -114,7 +114,7 @@ describe("ResponsiveImageTransformer", () => {
 		expect(imgSrcset).toEqual(expectedImgSrcset);
 	});
 
-	test("正常系: deviceSizes が指定されている場合はそれを使う", async () => {
+	test("正常系: deviceSizes が指定されている場合はそれを使う", () => {
 		const $ = cheerioLoad(`<figure>
       <img
         src="https://images.microcms-assets.io/assets/88f12f69f3bd4e13b769561fe720d255/04a3790c7ab94dff9379025420f60040/blog-template.png"
@@ -124,7 +124,7 @@ describe("ResponsiveImageTransformer", () => {
       >
     </figure>`);
 
-		await responsiveImageTransformer({
+		responsiveImageTransformer({
 			attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 			deviceSizes: [640, 750, 828],
 		})($);
@@ -148,10 +148,10 @@ describe("ResponsiveImageTransformer", () => {
 		expect(imgSrcset).toEqual(expectedImgSrcset);
 	});
 
-	test("正常系: imgタグが存在しない場合は何もしない", async () => {
+	test("正常系: imgタグが存在しない場合は何もしない", () => {
 		const $ = cheerioLoad("<div></div>");
 
-		await responsiveImageTransformer({
+		responsiveImageTransformer({
 			attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 			formats: ["default", "webp"],
 		})($);
@@ -159,24 +159,24 @@ describe("ResponsiveImageTransformer", () => {
 		expect($.html()).toEqual("<div></div>");
 	});
 
-	test("異常系: formats に不正な値が含まれている場合はエラー", async () => {
+	test("異常系: formats に不正な値が含まれている場合はエラー", () => {
 		const $ = cheerioLoad("<div></div>");
 
-		await expect(() =>
+		expect(() =>
 			responsiveImageTransformer({
 				attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 				// @ts-ignore
 				formats: ["default", "invalid"],
 			})($),
-		).rejects.toThrowError("Invalid format: invalid");
+		).toThrowError("Invalid format: invalid");
 	});
 
-	test("異常系: formats に重複する値が含まれている場合は警告", async () => {
+	test("異常系: formats に重複する値が含まれている場合は警告", () => {
 		const $ = cheerioLoad("<div></div>");
 
 		const consoleWarnSpy = vi.spyOn(console, "warn");
 
-		await responsiveImageTransformer({
+		responsiveImageTransformer({
 			attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 			formats: ["default", "default"],
 		})($);
@@ -188,12 +188,12 @@ describe("ResponsiveImageTransformer", () => {
 		consoleWarnSpy.mockRestore();
 	});
 
-	test("異常系: deviceSizes に重複する値が含まれている場合は警告", async () => {
+	test("異常系: deviceSizes に重複する値が含まれている場合は警告", () => {
 		const $ = cheerioLoad("<div></div>");
 
 		const consoleWarnSpy = vi.spyOn(console, "warn");
 
-		await responsiveImageTransformer({
+		responsiveImageTransformer({
 			attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 			deviceSizes: [640, 640],
 		})($);
@@ -205,7 +205,7 @@ describe("ResponsiveImageTransformer", () => {
 		consoleWarnSpy.mockRestore();
 	});
 
-	test("異常系: formats が空の場合はエラー", async () => {
+	test("異常系: formats が空の場合はエラー", () => {
 		const $ = cheerioLoad(`<figure>
       <img
         src="https://images.microcms-assets.io/assets/88f12f69f3bd4e13b769561fe720d255/04a3790c7ab94dff9379025420f60040/blog-template.png"
@@ -215,11 +215,11 @@ describe("ResponsiveImageTransformer", () => {
       >
     </figure>`);
 
-		await expect(() =>
+		expect(() =>
 			responsiveImageTransformer({
 				attributes: { sizes: "(max-width: 640px) 100vw, 1200px" },
 				formats: [],
 			})($),
-		).rejects.toThrowError("At least one format must be specified");
+		).toThrowError("At least one format must be specified");
 	});
 });
