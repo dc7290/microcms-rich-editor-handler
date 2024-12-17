@@ -35,6 +35,12 @@ describe("ResponsiveImageTransformer", () => {
 
 		expect(imgSrcset).toEqual(expectedImgSrcset);
 
+		const imgSrc = imgTags.attr("src");
+		const expectedImgSrc =
+			"https://images.microcms-assets.io/assets/88f12f69f3bd4e13b769561fe720d255/04a3790c7ab94dff9379025420f60040/blog-template.png?w=3840";
+
+		expect(imgSrc).toEqual(expectedImgSrc);
+
 		// sizes 属性が正しいかをチェック
 		const sizes = sourceTags.attr("sizes");
 		const expectedSizes = "(max-width: 640px) 100vw, 1200px";

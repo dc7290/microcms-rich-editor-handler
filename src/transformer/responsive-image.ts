@@ -127,6 +127,12 @@ const responsiveImageTransformer: (
 		$imgClone.attr("width", width);
 		$imgClone.attr("height", height);
 		$imgClone.attr("srcset", buildSrcset(src, deviceSizes, defaultFormat));
+		$imgClone.attr(
+			"src",
+			`${src}?w=${deviceSizes.at(-1)}${
+				defaultFormat === "default" ? "" : `&fm=${defaultFormat}`
+			}`,
+		);
 		$picture.append($imgClone);
 
 		// imgタグをpictureタグに置き換える
