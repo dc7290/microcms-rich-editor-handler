@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+	lang: "ja",
 	title: "microCMS RichEditor Handler",
 	titleTemplate: ":title | microCMS RichEditor Handler",
 	description:
