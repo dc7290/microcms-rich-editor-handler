@@ -4,10 +4,11 @@
  <em>microCMSのリッチエディタコンテンツを変換したりデータを抽出します。</em>
 </p>
 <p align="center">
- <img src="https://img.shields.io/github/license/dc7290/microcms-rich-editor-handler?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
- <img src="https://img.shields.io/github/last-commit/dc7290/microcms-rich-editor-handler?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
- <img src="https://img.shields.io/github/languages/top/dc7290/microcms-rich-editor-handler?style=default&color=0080ff" alt="repo-top-language">
- <img src="https://img.shields.io/github/languages/count/dc7290/microcms-rich-editor-handler?style=default&color=0080ff" alt="repo-language-count">
+<a href="https://www.npmjs.com/package/microcms-rich-editor-handler" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/microcms-rich-editor-handler"></a>
+<!-- <a href="https://npmcharts.com/compare/microcms-rich-editor-handler?minimal=true" target="_blank"><img alt="downloads" src="https://img.shields.io/npm/dt/microcms-rich-editor-handler"></a> -->
+<a href="https://www.npmjs.com/package/microcms-rich-editor-handler" target="__blank"><img alt="License" src="https://img.shields.io/npm/l/microcms-rich-editor-handler?label=License"></a>
+<a href="https://github.com/dc7290/microcms-rich-editor-handler/actions/workflows/node.js.yml" target="_blank"><img alt="Node.js CI" src="https://github.com/dc7290/microcms-rich-editor-handler/actions/workflows/node.js.yml/badge.svg"></a>
+<!-- <a href="https://github.com/dc7290/microcms-rich-editor-handler/stargazers" target="_blank"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/dc7290/microcms-rich-editor-handler?style=social"></a> -->
 </p>
 
 [ドキュメントサイト](https://microcms-rich-editor-handler.vercel.app)
