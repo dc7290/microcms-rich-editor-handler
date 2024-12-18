@@ -8,7 +8,7 @@
     "rich",
     "editor"
   ],
-  "homepage": "https://github.com/dc7290/microcms-rich-editor-handler#readme",
+  "homepage": "https://microcms-rich-editor-handler.vercel.app",
   "bugs": {
     "url": "https://github.com/dc7290/microcms-rich-editor-handler/issues"
   },
