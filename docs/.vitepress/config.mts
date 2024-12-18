@@ -39,6 +39,10 @@ export default defineConfig({
 								link: "/features/transformer/syntax-highlighting-by-shiki",
 							},
 							{
+								text: "Code Block File Name",
+								link: "/features/transformer/code-block-file-name",
+							},
+							{
 								text: "Attributes",
 								link: "/features/transformer/attributes",
 							},
@@ -61,6 +65,7 @@ export default defineConfig({
 				items: [
 					{ text: "Responsive Image", link: "/examples/responsive-image" },
 					{ text: "Lazy Loading", link: "/examples/lazy-loading" },
+					{ text: "Astro", link: "/examples/astro" },
 				],
 			},
 		],

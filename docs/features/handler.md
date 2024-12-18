@@ -39,57 +39,24 @@ export const microCMSRichEditorHandler = async <T extends DefaultGenerics>(
 
 extractorsに指定したキーに対応するするようにdataの型を決定するために少し複雑になっていますが、基本的には以下のように使います。
 
-例）Astroでの使用例
-
-```astro {25-33}
----
-import type { MicroCMSListContent } from "microcms-js-sdk";
-import { createClient } from "microcms-js-sdk";
+```js
 import {
  microCMSRichEditorHandler,
  responsiveImageTransformer,
- tocExtractor,
-} from "microcms-rich-editor-handler";
+ tocExtractor
+} from 'microcms-rich-editor-handler';
 
-const client = createClient({
- serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
- apiKey: import.meta.env.MICROCMS_API_KEY,
-});
-
-export type Blog = {
- title: string;
- content: string;
-} & MicroCMSListContent;
-
-const blogContent = await client.getListDetail<Blog>({
- endpoint: "blogs",
- contentId: "id001",
-});
-
-const {
- html,
- data: { toc },
-} = await microCMSRichEditorHandler(blogContent.content, {
- transformers: [responsiveImageTransformer()],
- extractors: {
-  toc: [tocExtractor(), { phase: "before" }],
- },
-});
-
-blogContent.content = html;
----
-
-<main>
-  <nav>
-    {toc.map((item) => (
-      <a href={`#${item.id}`}>{item.text}</a>
-    ))}
-  </nav>
-  <section>
-    <h1>{blogContent.title}</h1>
-    <div set:html={blogContent.content}></div>
-  </section>
-</main>
+const main = async () => {
+ const { html, data } = await microCMSRichEditorHandler(
+  dataFromMicroCMS, // MicroCMSから取得したデータのリッチエディタのHTML文字列
+  {
+   transformers: [responsiveImageTransformer()],
+   extractors: {
+    toc: [tocExtractor(), { phase: "before" }],
+   },
+  },
+ );
+};
 ```
 
 ## Parameters
