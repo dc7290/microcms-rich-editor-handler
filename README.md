@@ -7,8 +7,8 @@
 <a href="https://www.npmjs.com/package/microcms-rich-editor-handler" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/microcms-rich-editor-handler"></a>
 <!-- <a href="https://npmcharts.com/compare/microcms-rich-editor-handler?minimal=true" target="_blank"><img alt="downloads" src="https://img.shields.io/npm/dt/microcms-rich-editor-handler"></a> -->
 <a href="https://www.npmjs.com/package/microcms-rich-editor-handler" target="__blank"><img alt="License" src="https://img.shields.io/npm/l/microcms-rich-editor-handler?label=License"></a>
-<a href="https://github.com/dc7290/microcms-rich-editor-handler/actions/workflows/node.js.yml" target="_blank"><img alt="Node.js CI" src="https://github.com/dc7290/microcms-rich-editor-handler/actions/workflows/node.js.yml/badge.svg"></a>
-<!-- <a href="https://github.com/dc7290/microcms-rich-editor-handler/stargazers" target="_blank"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/dc7290/microcms-rich-editor-handler?style=social"></a> -->
+<a href="https://github.com/microcmsio/microcms-rich-editor-handler/actions/workflows/node.js.yml" target="_blank"><img alt="Node.js CI" src="https://github.com/microcmsio/microcms-rich-editor-handler/actions/workflows/node.js.yml/badge.svg"></a>
+<!-- <a href="https://github.com/microcmsio/microcms-rich-editor-handler/stargazers" target="_blank"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/microcmsio/microcms-rich-editor-handler?style=social"></a> -->
 </p>
 
 [ドキュメントサイト](https://microcms-rich-editor-handler.vercel.app)

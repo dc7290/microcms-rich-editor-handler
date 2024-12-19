@@ -10,11 +10,11 @@
   ],
   "homepage": "https://microcms-rich-editor-handler.vercel.app",
   "bugs": {
-    "url": "https://github.com/dc7290/microcms-rich-editor-handler/issues"
+    "url": "https://github.com/microcmsio/microcms-rich-editor-handler/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dc7290/microcms-rich-editor-handler.git"
+    "url": "git+https://github.com/microcmsio/microcms-rich-editor-handler.git"
   },
   "license": "MIT",
   "author": "d-suke",

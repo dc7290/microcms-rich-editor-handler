@@ -74,7 +74,7 @@ export default defineConfig({
 		socialLinks: [
 			{
 				icon: "github",
-				link: "https://github.com/dc7290/microcms-rich-editor-handler",
+				link: "https://github.com/microcmsio/microcms-rich-editor-handler",
 			},
 			{ icon: "x", link: "https://x.com/d_suke_09" },
 		],
